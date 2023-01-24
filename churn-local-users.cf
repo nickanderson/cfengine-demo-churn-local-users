@@ -34,5 +34,5 @@ bundle agent demo_churn_local_users
 
     "!demo_churn_local_users_enabled.$(this.bundle)_supported_platform"::
       "$(_candidates)"
-        policy => absent;
+        policy => "absent";
 }
