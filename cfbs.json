@@ -1,0 +1,18 @@
+{
+  "name": "cfengine-demo-churn-local-users",
+  "description": "This policy creates and deletes local users. It's only purpose is to facilitate data generation for being able to see something in CFEngine Enterprise Mission Portal.",
+  "type": "module",
+  "provides": {
+    "cfengine-demo-churn-local-users": {
+      "description": "This policy creates and deletes local users. It's only purpose is to facilitate data generation for being able to see something in CFEngine Enterprise Mission Portal.",
+      "tags": ["demo"],
+      "repo": "https://github.com/nickanderson/cfengine-demo-churn-local-users",
+      "by": "https://github.com/nickanderson",
+      "steps": [
+        "copy churn-local-users.cf services/cfbs/modules/cfengine-demo-churn-local-users/churn-local-users.cf",
+        "policy_files services/cfbs/modules/cfengine-demo-churn-local-users/churn-local-users.cf",
+        "bundles nickanderson:demo_churn_local_users"
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+#+Title: Create and delete local users
+
+This policy creates and deletes local users. It's only purpose is to facilitate data generation for being able to see something in CFEngine Enterprise Mission Portal.
+
+* Configuration
+
+** Variables
+
+- =nickanderson:demo_churn_local_users._candidates= :: A list of usernames to work with.
+
+   During each agent run for each user we randomly determine if each user should be present or absent
+
+** Classes
+- =nickanderson:demo_churn_local_users_enabled= :: If defined (and if it's a supported platform) enabled the policy will be active and will try to
+
+* Products
+
+* Installation
+
+This module is not listed on [[https://build.cfengine.com][CFEngine Build]], to use it add it by repository url.
+
+#+caption: Example cfbs command to add this module to a CFEngine Build project
+#+begin_src sh :results output :exports both
+  cfbs add https://github.com/nickanderson/cfengine-demo-churn-local-users
+#+end_src

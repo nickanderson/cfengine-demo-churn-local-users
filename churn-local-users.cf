@@ -1,0 +1,38 @@
+body file control
+{
+        namespace => "nickanderson";
+}
+bundle agent demo_churn_local_users
+{
+
+  vars:
+      "_candidates"
+        slist => {
+                   "yoda",
+                   "luke",
+                   "boba",
+                   "jabba",
+                   "leia",
+                   "chewbacca",
+        };
+
+    demo_churn_local_users_enabled::
+      # We just want to make some noise, so for each user let's say there is a ~25% chance we want them to be present.
+      "user[$(_candidates)]"
+        string => ifelse( isgreaterthan( randomint( 0, 100), "25" ), "absent", "present"),
+        if => not( isvariable( "user[$(_candidates)]" ) );
+
+  classes:
+
+      "$(this.bundle)_supported_platform"
+        expression => "!windows";
+
+  users:
+    "demo_churn_local_users_enabled.$(this.bundle)_supported_platform"::
+      "$(_candidates)"
+        policy => "$(user[$(_candidates)])";
+
+    "!demo_churn_local_users_enabled.$(this.bundle)_supported_platform"::
+      "$(_candidates)"
+        policy => absent;
+}
